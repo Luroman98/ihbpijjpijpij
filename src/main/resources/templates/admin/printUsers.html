@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>print User</title>
+</head>
+<body>
+<table border = "1">
+    <tr>
+        <th>id</th>
+        <th>userName</th>
+        <th>lastName</th>
+        <th>Delete</th>
+        <th>Update</th>
+    </tr>
+    <tr th:each ="user : ${users}">
+        <td th:utext="${user.id}"></td>
+        <td th:utext="${user.firstName}"></td>
+        <td th:utext="${user.lastName}"></td>
+        <td><form th:method="DELETE" th:action="@{/admin/delete/{id}(id=${user.id})}">
+            <input type="submit" value="Delete"/>
+        </form></td>
+        <td><a th:href="@{/admin/update/{id}(id=${user.id})}">Update</a></td>
+    </tr>
+</table>
+<td><a th:href="@{/admin/new}">New User</a></td>
+<br/>
+<td><a th:href="@{/logout}">Log Out</a></td>
+</body>
+</html>

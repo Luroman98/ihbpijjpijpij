@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New User</title>
+</head>
+<body>
+<form th:method="POST" th:action="@{/admin/new}" th:object="${user}">
+    <label for="userName">UserName: </label>
+    <input type="text" th:field="*{firstName}" id="userName">
+    <label for="password">Password: </label>
+    <input type="password" th:field="*{password}" id="password">
+    <label for="lastName">LastName: </label>
+    <input type="text" th:field="*{lastName}" id="lastName">
+    <br/>
+    <div>
+        <th:block th:each="role : ${roles}">
+            <label>
+                <input type="checkbox"
+                       name="idRoles"
+                       th:value="${role.getId()}"
+                       th:text="${role.getName()}">
+            </label>
+        </th:block>
+    </div>
+    <br/>
+    <input type="submit" value="Create"/>
+</form>
+</body>
+</html>
